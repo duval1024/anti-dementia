@@ -1,3 +1,9 @@
+# 关于本书
+
+本书gitbook地址：[《Anti-Dementia》](https://duval1024.gitbook.io/anti-dementia/)
+
+本书将详细记录笔者刷算法的过程。
+
 * [关于本书](README.md)
 * [算法思想](算法思想/README.md)
   * [深度优先搜索](算法思想/dfs.md)
@@ -7,3 +13,9 @@
   * [p91-解码方法](problem/p91-decode-ways.md)
   * [p139-单词拆分](problem/p139-word-break.md)
   * [p198-打家劫舍](problem/p198-house-robber.md)
+
+
+
+## 备注
+- 1. github page中如无法显示公式，请安装chrome插件MathJax Plugin for Github。
+

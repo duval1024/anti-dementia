@@ -1,0 +1,128 @@
+## 题目来源
+https://leetcode-cn.com/problems/house-robber/
+
+## 题目描述
+
+你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。
+
+给定一个代表每个房屋存放金额的非负整数数组，计算你 不触动警报装置的情况下 ，一夜之内能够偷窃到的最高金额。
+
+ 
+
+示例 1：
+```text
+输入：[1,2,3,1]
+输出：4
+解释：偷窃 1 号房屋 (金额 = 1) ，然后偷窃 3 号房屋 (金额 = 3)。
+     偷窃到的最高金额 = 1 + 3 = 4 。
+```
+示例 2：
+```text
+输入：[2,7,9,3,1]
+输出：12
+解释：偷窃 1 号房屋 (金额 = 2), 偷窃 3 号房屋 (金额 = 9)，接着偷窃 5 号房屋 (金额 = 1)。
+     偷窃到的最高金额 = 2 + 9 + 1 = 12 。
+```
+
+提示：
+```
+0 <= nums.length <= 100
+0 <= nums[i] <= 400
+```
+## 核心知识
+动态规划、空间状态压缩
+
+## 解题思路
+
+### 二维DP
+首先想到的是二维状态转移方程，房屋列表nums构成长度为N的一维空间，每间房屋都有被偷窃(true)和没有被偷窃(False)两种状态。于是，很容易想到2*N的状态转移方程：
+
+$$ 
+\begin{cases}
+dp[0][0] = 0, \ dp[0][1]=nums[0], \\\\
+dp[i][0]= max(dp[i - 1][1] , \ dp[i - 1][0]), \\\\
+dp[i][1]= dp[i - 1][0] + nums[i]
+\end{cases}
+$$
+
+根据这个方程，很容易写出如下代码：
+
+```java
+    public int rob(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+
+        int dp[][] = new int[nums.length][2];
+        dp[0][0] = 0;
+        dp[0][1] = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            dp[i][0] = Integer.max(dp[i - 1][1] , dp[i - 1][0]);
+            dp[i][1] = dp[i - 1][0] + nums[i];
+        }
+
+        return Integer.max(dp[nums.length - 1][0], dp[nums.length - 1][1]);
+    }
+```
+
+## 带空间压缩的二维DP
+显然上边的状态转移方程已用到了 *dp[i-1][0]* 和 *dp[i-1][1]* 下标，所以可以进行空间压缩：
+
+```java
+
+    public int robCompress(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+
+        int preFalse = 0;  // dp[i - 1][0]
+        int preTrue = nums[0]; // dp[i - 1][1]
+
+        for (int i = 1; i < nums.length; i++) {
+            int nextFalse = Integer.max(preTrue, preFalse);
+            int nextTrue = preFalse + nums[i];
+            preFalse = nextFalse;
+            preTrue = nextTrue;
+        }
+
+        return Integer.max(preFalse, preTrue);
+    }
+
+```
+
+## 一维DP
+
+二维DP还是略复杂，还可以有更简单的一维DP：
+
+$$
+\begin{cases}
+dp[0] = nums[0],  \\\\
+dp[1] = max(nums[0], nums[1]), \\\\
+dp[i]=max(dp[i-2] + nums[i], dp[i-1]) 
+\end{cases}
+$$
+
+同样，空间只用到 *dp[i-2]* 和 *dp[i-1]* ，可以进行空间压缩，于是得到如下代码：
+
+```java
+    public int robOneDimension(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        } else if (nums.length == 1) {
+            return nums[0];
+        }
+
+        int pre = nums[0]; // dp[i-2]
+        int sub = Integer.max(nums[0], nums[1]); // dp[i-1]
+
+        for (int i = 2; i < nums.length; i++) {
+            int next = Integer.max(pre + nums[i], sub);
+            pre = sub;
+            sub = next;
+        }
+        return sub;
+    }
+```
+
+## 其他补充

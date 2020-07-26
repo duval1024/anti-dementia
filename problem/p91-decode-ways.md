@@ -1,0 +1,110 @@
+# p91-解码方法
+## 题目来源
+
+https://leetcode-cn.com/problems/decode-ways/
+
+## 题目描述
+
+
+一条包含字母 A-Z 的消息通过以下方式进行了编码：
+
+```
+'A' -> 1
+'B' -> 2
+...
+'Z' -> 26
+```
+给定一个只包含数字的非空字符串，请计算解码方法的总数。
+
+示例 1:
+```
+输入: "12"
+输出: 2
+解释: 它可以解码为 "AB"（1 2）或者 "L"（12）。
+```
+
+示例 2:
+
+```
+输入: "226"
+输出: 3
+解释: 它可以解码为 "BZ" (2 26), "VF" (22 6), 或者 "BBF" (2 2 6) 。
+```
+
+## 核心知识
+动态规划
+
+## 解题思路
+
+```
+边界条件:
+    1.s以'0'开头，返回0；
+
+dp状态方程:
+    dp[0] = dp[1] = 1;
+    1. 当s[i] == '0' :
+        -> 当s[i-1] == '1' or '2', dp[i] = dp[i-2];
+        -> 其他情况不满足编码要求，返回0;
+    2. 当'1' <= s[i] <= '6':
+        -> 当s[i-1] == '1' or '2', dp[i] = dp[i-1] + dp[i-2];
+        -> 其他情况，dp[i] = dp[i-1];
+    3. 其他情况 s[i] == '7' ~ '9':
+        -> 当 s[i-1] = 1, dp[i] = dp[i-1] + dp[i-2];
+        -> 其他情况, dp[i] = dp[i-1].
+```
+
+修剪下分支得到：
+
+```
+
+边界条件:
+    1.s以'0'开头，返回0；
+
+dp状态方程:
+    dp[0] = dp[1] = 1;
+    1. 当s[i] == '0' :
+        -> 当s[i-1] == '1' or '2', dp[i] = dp[i-2];
+        -> 否则不满足编码要求，返回0;
+    2. 当'1' <= s[i] <= '6' ， s[i-1] == '1' or '2':
+        -> dp[i] = dp[i-1] + dp[i-2];
+    3. 当s[i] == '7' ~ '9'，  s[i-1] = 1:
+        -> dp[i] = dp[i-1] + dp[i-2];
+    4. 其他情况, dp[i] = dp[i-1].
+
+```
+
+## 通过代码
+
+```java
+ public int numDecodingsSimplify(String s) {
+    if (s.startsWith("0")) {
+        return 0;
+    }
+
+    int pre = 1;
+    int sub = 1;
+    for (int index = 1; index < s.length(); index++) {
+        int next = sub;
+        int currentChar = s.charAt(index);
+        int preChar = s.charAt(index - 1);
+        if (currentChar == '0') {
+            if (preChar == '1' || preChar == '2') {
+                next = pre;
+            } else {
+                return 0;
+            }
+        } else if (('1' <= currentChar && currentChar <= '6') && (preChar == '1' || preChar == '2')) {
+            next = pre + sub;
+        } else if (('7' <= currentChar && currentChar <= '9') && preChar == '1') {
+            next = pre + sub;
+        }
+
+        pre = sub;
+        sub = next;
+    }
+
+    return sub;
+}
+```
+
+## 其他补充

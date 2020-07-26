@@ -75,9 +75,9 @@
 
 $$ 
 \begin{cases}
-dp[0][0] = 0,\ dp[0][1] = -prices[0], \\\\
-dp[i][0]= max(dp[i - 1][0], \ dp[i - 1][1] + prices[i] - fee), \\\\
-dp[i][1]= max(dp[i - 1][0] - prices[i], \ dp[i - 1][1]),
+dp[0][0] = 0,\ dp[0][1] = -prices[0]; \\\\
+dp[i][0]= max(dp[i - 1][0], \ dp[i - 1][1] + prices[i] - fee); \\\\
+dp[i][1]= max(dp[i - 1][0] - prices[i], \ dp[i - 1][1]).
 \end{cases}
 $$
 
@@ -102,3 +102,6 @@ $$
 
 ## 其他补充
 
+股票买卖类型题目：
+- [p714-买卖股票的最佳时机含手续费](p714-best-time-to-buy-and-sell-stock-with-transaction-fee.md)
+- [p309-最佳买卖股票时机含冷冻期](p309_best-time-to-buy-and-sell-stock-with-cooldown.md)

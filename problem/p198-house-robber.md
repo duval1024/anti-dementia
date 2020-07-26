@@ -39,9 +39,9 @@ https://leetcode-cn.com/problems/house-robber/
 
 $$ 
 \begin{cases}
-dp[0][0] = 0, \ dp[0][1]=nums[0], \\\\
-dp[i][0]= max(dp[i - 1][1] , \ dp[i - 1][0]), \\\\
-dp[i][1]= dp[i - 1][0] + nums[i]
+dp[0][0] = 0, \ dp[0][1]=nums[0]; \\\\
+dp[i][0]= max(dp[i - 1][1] , \ dp[i - 1][0]); \\\\
+dp[i][1]= dp[i - 1][0] + nums[i].
 \end{cases}
 $$
 

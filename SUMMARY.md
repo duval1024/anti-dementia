@@ -3,4 +3,7 @@
   * [深度优先搜索](算法思想/dfs.md)
   * [广度优先搜索](算法思想/bfs.md)
 * [模拟](模拟/README.md)
+* [搜索算法](搜索算法/README.md)
 * [动态规划](动态规划/README.md)
+* [图](图/README.md)
+* [树](树/README.md)

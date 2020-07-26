@@ -40,11 +40,12 @@
 
 ### 贪心解法
 
-### 动态规划解法
+贪心解法的其实就是人的正常思维：收益最大化，并且厌恶亏损。于是有思路：
+- 令昨天股票成本为*cost*元；
+- 如果今天股票价格*price[i]*比昨天成本*cost*高，那么昨天不应该卖出，如果今天卖出可以增加收益*profit=price[i] - cost - fee*；然后这部分收益应该落袋为安（比如被老婆搜刮充公)，那么当前股票成本为*cost = price[i] - fee*;
+- 如果今天股价*price[i]*比昨天成本*cost*低了，那么昨天应该赶紧卖掉落袋为安，而今天应该买入，因为今天的股票成本更低为*cost=price[i] - fee*。
 
-## 通过代码
-
-* 贪心
+初始条件是第一天买入，也就是*cost=price[0]*，于是可以得到贪心解法：
 
 ```java
     public int maxProfitGreedy(int[] prices, int fee) {
@@ -68,7 +69,19 @@
     }
 ```
 
-* 动态规划
+### 动态规划解法
+
+每天的价格变化数组price[N]构成第一维，此外每天都有持仓 *dp[i][1]* 和空仓 *dp[i][0]* 两种状态，因此得到2*N的状态转移方程：
+
+$$ 
+\begin{cases}
+dp[0][0] = 0,\ dp[0][1] = -prices[0], \\\\
+dp[i][0]= max(dp[i - 1][0], \ dp[i - 1][1] + prices[i] - fee), \\\\
+dp[i][1]= max(dp[i - 1][0] - prices[i], \ dp[i - 1][1]),
+\end{cases}
+$$
+
+容易得到如下代码：
 
 ```java
     public int maxProfit(int[] prices, int fee) {
@@ -84,6 +97,8 @@
         return Integer.max(dp[prices.length-1][0], dp[prices.length-1][1]);
     }
 ```
+
+此外，状态方程只用到 *dp[i - 1][0]* 和 *dp[i - 1][1]*。因此可以进行状态压缩，此处不再赘言。
 
 ## 其他补充
 

@@ -96,7 +96,61 @@ class Solution {
     }
 }
 ```
-### 三维DP+空间压缩
+### 边界条件优化
+上边的边界条件实在太复杂了，需要简化下，否则实战中很难想出来。我们再来回顾下：
+```text
+1. 买入次数k为0却有持仓 ：dp[i][0][1] = Integer.MIN_VALUE / 2;
+2. 第0天买入了两次：dp[0][2][0] = dp[0][2][1] = Integer.MIN_VALUE / 2;
+3. 第0天买入了1次且有持仓：dp[0][1][1] = -prices[0];
+4. 其他情况都是初始值0.
+```
+优化思路如下：
+- 1.情况1属于不可能情况，不可能情况其实可以初始化为0，因为初始化为0不会对收益产生任何累积影响；
+- 2.情况2、情况3，第一天允许多次买卖，只要当天最后还有持仓，则收益为-prices[0];
+- 3.情况4保持不变。
+
+经过上述调整，边界条件其实简化为：
+
+```java
+    int dp[][][] = new int[n][3][2];
+    dp[0][1][1] = -prices[0];
+    dp[0][2][1] = -prices[0];
+```
+
+### 空间压缩
+
+第i天的数据都是用i-1天算出来的，所以用5个变量把前一天的5个状态全部存起来就可以了。比如pxy ： x表示进行了x次买卖，0<=x<=2; 而y表示是否有持仓，取值为0/1。
+
+```java
+      public int maxProfit(int[] prices) {
+        if (prices == null || prices.length <= 1) {
+            return 0;
+        }
+
+        int n = prices.length;
+        int p00 = 0;
+        int p11 = -prices[0];
+        int p10 = 0;
+        int p21 = -prices[0];
+        int p20 = 0;
+
+
+        for (int i = 1; i < n; i++) {
+            int s10 = Integer.max(p10, p11 + prices[i]);
+            int s11 = Integer.max(p00 - prices[i], p11);
+            int s20 = Integer.max(p20, p21 + prices[i]);
+            int s21 = Integer.max(p10 - prices[i], p21);
+
+            p10 = s10;
+            p11 = s11;
+            p20 = s20;
+            p21 = s21;
+        }
+
+        return Integer.max(p20, p10);
+    }
+
+```
 
 
 ### 二维DP+空间压缩

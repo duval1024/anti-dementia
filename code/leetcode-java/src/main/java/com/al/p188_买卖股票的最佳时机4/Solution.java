@@ -67,7 +67,13 @@ public class Solution {
             return 0;
         }
 
+
         int n = prices.length;
+
+        if (k > n / 2) {
+            return directMax(prices);
+        }
+
         int dp[][] = new int[k + 1][2];
         for (int i = 1; i < k + 1; i++) {
             dp[i][1] = -prices[0];
@@ -76,7 +82,7 @@ public class Solution {
         for (int i = 1; i < n; i++) {
             for (int j = 1; j < k + 1; j++) {
                 dp[j][0] = Integer.max(dp[j][0], dp[j][1] + prices[i]);
-                dp[j][1] = Integer.max(dp[j - 1][0] - prices[i],  dp[j][1]);
+                dp[j][1] = Integer.max(dp[j - 1][0] - prices[i], dp[j][1]);
             }
         }
 
@@ -86,6 +92,21 @@ public class Solution {
         }
 
         return max;
+    }
+
+    public int directMax(int[] prices) {
+
+        int lowPrice = prices[0];
+        int maxProfit = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] > lowPrice) {
+                maxProfit += (prices[i] - lowPrice);
+            }
+
+            lowPrice = prices[i];
+        }
+
+        return maxProfit;
     }
 
     @Test
@@ -107,6 +128,9 @@ public class Solution {
         Assert.assertEquals(new Solution().maxProfitCompress1(2, new int[]{3, 3, 5, 0, 0, 3, 1, 4}), 6);
         Assert.assertEquals(new Solution().maxProfitCompress1(2, new int[]{1, 2, 3, 4, 5}), 4);
         Assert.assertEquals(new Solution().maxProfitCompress1(2, new int[]{7, 6, 4, 3, 1}), 0);
+
+        Assert.assertEquals(new Solution().maxProfitCompress1(2, new int[]{7, 10}), 3);
+
 
         Assert.assertEquals(new Solution().maxProfitCompress1(2, new int[]{1, 2, 4, 2, 5, 7, 2, 4, 9, 0}), 13);
     }

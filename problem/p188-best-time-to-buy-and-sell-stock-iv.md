@@ -131,6 +131,77 @@ $$
 
 这思路就是把第一维拿掉，然后直接在二维数组上累算，空间复杂度降低到了一半到O(2*(K+1))。没想到还是超出内存限制！！！难道还要降低空间复杂度吗？？？
 
+再看看报错的样例：
+
+```text
+1000000000
+[106,373,495,46,359,919,......]
+```
+注意到k=1000000000，就算是一个O(k）空间复杂度的程序，所占用的内存都已经非常巨大了！
+
+仔细想想，当k > n /2的时候，其实买卖次数已经没有任何限制了。所以其实可以降级为直接计算，那样子更节省空间，于是有如下解法：
+
+```java
+ public int maxProfitCompress1(int k, int[] prices) {
+        if (prices == null || prices.length <= 1) {
+            return 0;
+        }
+
+
+        int n = prices.length;
+
+        if (k > n / 2) {
+            return directMax(prices);
+        }
+
+        int dp[][] = new int[k + 1][2];
+        for (int i = 1; i < k + 1; i++) {
+            dp[i][1] = -prices[0];
+        }
+
+        for (int i = 1; i < n; i++) {
+            for (int j = 1; j < k + 1; j++) {
+                dp[j][0] = Integer.max(dp[j][0], dp[j][1] + prices[i]);
+                dp[j][1] = Integer.max(dp[j - 1][0] - prices[i], dp[j][1]);
+            }
+        }
+
+        int max = 0;
+        for (int i = 1; i < k + 1; i++) {
+            max = Integer.max(max, dp[i][0]);
+        }
+
+        return max;
+    }
+
+    public int directMax(int[] prices) {
+        int lowPrice = prices[0];
+        int maxProfit = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] > lowPrice) {
+                maxProfit += (prices[i] - lowPrice);
+            }
+
+            lowPrice = prices[i];
+        }
+
+        return maxProfit;
+    }
+
+```
+
+终于通过了。。。
+
+![result](../asset/result.png)
+
 ## 其他补充
 
+
+股票买卖类型题目：
+- [p121-买卖股票的最佳时机](p121-best-time-to-buy-and-sell-stock.md)
+- [p122--买卖股票的最佳时机 II](p122-best-time-to-buy-and-sell-stock-ii.md)
+- [p123-买卖股票的最佳时机 III](p123-best-time-to-buy-and-sell-stock-iii.md)
+- [p188-买卖股票的最佳时机 IV](p188-best-time-to-buy-and-sell-stock-iv.md)
+- [p714-买卖股票的最佳时机含手续费](p714-best-time-to-buy-and-sell-stock-with-transaction-fee.md)
+- [p309-最佳买卖股票时机含冷冻期](p309_best-time-to-buy-and-sell-stock-with-cooldown.md)
 

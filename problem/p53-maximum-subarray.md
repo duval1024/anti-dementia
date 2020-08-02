@@ -1,0 +1,141 @@
+# p53-最大子序和
+## 题目来源
+https://leetcode-cn.com/problems/maximum-subarray/
+## 题目描述
+给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
+
+示例:
+```text
+输入: [-2,1,-3,4,-1,2,1,-5,4]
+输出: 6
+解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。
+```
+进阶:
+
+如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的分治法求解。
+
+## 题目难度
+> ★★★★★
+
+## 核心知识
+贪心、动态规划、线段树
+
+## 解题思路
+这道题是简单级别的，我一下子竟然没想出来。看了官方题解才恍然大悟，真是丢人！
+### 贪心
+- 错误方法：**滑动窗口**
+  
+一开始我想到的方法是使用滑动窗口，不断地在左边或者右边缩短区间，并保存最大值。但是没考虑到数组会存在相同数字，**如果区间的左右端点是相同数字，无法贪心决定缩短左边，抑或是缩短右边**。因此无法通过样例。
+
+- 正确方法：从左到右累计
+
+从左到右不断地累计，如果当前的累计值小于0，则这个累计值已经没有意义可以丢弃了。因为一个负数参与累计会导致区间和更小。因此得到如下解法：
+
+```java
+    public int maxSubArrayGreedy(int[] nums) {
+
+        int maxSum = nums[0];
+        int preSum = nums[0];
+        for (int index = 1; index < nums.length; index++) {
+            if (preSum < 0) {
+                // 丢弃负数的累计值，从新开始累计
+                preSum = nums[index];
+            } else {
+                // 不断累计
+                preSum += nums[index];
+            }
+            // 缓存最大值
+            maxSum = Integer.max(maxSum, preSum);
+        }
+
+        return maxSum;
+    }
+
+```
+结合后文的DP解法，细细想一想其实原理是一样的。
+
+### 动态规划
+这个DP非常简单，思路：
+- dp[i-1]表示以num[i-1]为右端点的区间的最大和；
+- 如果dp[i-1] > 0，那么num[i] 应该加入这个区间；
+- 如果dp[i-1] <= 0，那么num[i] 没必要加入这个区间。
+
+整理为状态转移方程如下：
+
+$$
+\begin{cases}
+dp[0] = num[0], \\\\
+dp[i] = max(dp[i-1]+num[i], num[i])
+\end{cases}
+$$
+
+加上空间压缩，翻译成代码如下：
+
+```java
+    public int maxSubArray(int[] nums) {
+        int pre = 0;
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < nums.length; i++) {
+            pre = Integer.max(nums[i], pre + nums[i]);
+            max = Integer.max(max, pre);
+        }
+        return max;
+    }
+```
+
+### 分支法--线段树
+这个方法真是没想到，尤其是两个区间合并的思想，让人不禁想起归并排序。具体题解思路并不复杂，还是看[官方题解](https://leetcode-cn.com/problems/maximum-subarray/solution/zui-da-zi-xu-he-by-leetcode-solution/)吧。
+
+附上我的AC代码:
+
+```java
+ class Step {
+        // 靠左区间
+        int lsum;
+        // 靠右区间
+        int rsum;
+        // 内部区间
+        int isum;
+        // 整个区间
+        int asum;
+    }
+
+    public Step merge(Step left, Step right) {
+        Step newStep = new Step();
+        newStep.asum = left.asum + right.asum;
+        newStep.lsum = Integer.max(left.lsum, left.asum + right.lsum);
+        newStep.rsum = Integer.max(right.rsum, right.asum + left.rsum);
+        newStep.isum = Integer.max(Integer.max(left.isum, right.isum), left.rsum + right.lsum);
+        return newStep;
+    }
+
+    public Step getStep(int l, int r, int[] nums) {
+        if (l == r) {
+            Step newStep = new Step();
+            newStep.lsum = nums[l];
+            newStep.rsum = nums[l];
+            newStep.isum = nums[l];
+            newStep.asum = nums[l];
+            return newStep;
+        }
+
+        int mid = (l + r) / 2;
+        Step left = getStep(l, mid, nums);
+        Step right = getStep(mid + 1, r, nums);
+        return merge(left, right);
+    }
+
+
+    public int maxSubArrayBinary(int[] nums) {
+        Step result = getStep(0, nums.length - 1, nums);
+        return Integer.max(Integer.max(result.lsum, result.rsum), Integer.max(result.isum, result.asum));
+    }
+
+```
+
+## 其他补充
+
+
+子序列相关问题：
+- [p53-最大子序和](../problem/p53-maximum-subarray.md)
+- [p300-最长上升子序列](../problem/p300-longest-increasing-subsequence.md)

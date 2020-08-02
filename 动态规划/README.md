@@ -8,3 +8,4 @@
   * [p91-解码方法](../problem/p91-decode-ways.md)
   * [p139-单词拆分](../problem/p139-word-break.md)
   * [p198-打家劫舍](../problem/p198-house-robber.md)
+  * [p53-最大子序和](../problem/p53-maximum-subarray.md)

@@ -8,3 +8,4 @@
 * [动态规划](动态规划/README.md)
 * [图](图/README.md)
 * [树](树/README.md)
+* [二分查找](二分查找/README.md)

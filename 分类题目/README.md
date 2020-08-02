@@ -10,3 +10,8 @@
 - [p188-买卖股票的最佳时机 IV](../problem/p188-best-time-to-buy-and-sell-stock-iv.md)
 - [p714-买卖股票的最佳时机含手续费](../problem/p714-best-time-to-buy-and-sell-stock-with-transaction-fee.md)
 - [p309-最佳买卖股票时机含冷冻期](../problem/p309_best-time-to-buy-and-sell-stock-with-cooldown.md)
+
+
+打家劫舍类型题目：
+- [p198_打家劫舍](../problem/p198-house-robber.md)
+- [p740_删除与获得点数](../problem/p740_删除与获得点数.md)

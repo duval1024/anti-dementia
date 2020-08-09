@@ -40,21 +40,4 @@ public class Solution {
         Assert.assertEquals(movesToMakeZigzag(new int[]{2, 7, 10, 9, 8, 9}), 4);
 
     }
-
-    @Test
-    public void tet1() {
-        String string = new String("Здравствуйте");
-        System.out.println(string.length());
-        System.out.println(string.charAt(2));
-        for (byte b : string.getBytes()) {
-            System.out.print(b);
-            System.out.print(" ");
-        }
-        System.out.println();
-        System.out.println(string.getBytes().length);
-
-        String str = "नमस्ते";
-        System.out.println(str.length());
-        System.out.println(str.getBytes().length);
-    }
 }

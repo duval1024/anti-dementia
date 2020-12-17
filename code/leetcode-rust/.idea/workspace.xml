@@ -13,10 +13,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3508452f-2eae-47a3-8860-01af50329e29" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/leetcode-rust.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/leetcode-rust.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +150,7 @@
       <workItem from="1598538024257" duration="41000" />
       <workItem from="1598538070944" duration="2630000" />
       <workItem from="1599382293565" duration="2085000" />
-      <workItem from="1599384555161" duration="3306000" />
+      <workItem from="1599384555161" duration="3864000" />
     </task>
     <servers />
   </component>

@@ -2,3 +2,9 @@ code/leetcode-java/target
 code/leetcode-java/.idea
 node_modules
 upload.py
+.vscode/
+leet-data/
+.settings/
+.idea/
+.classpath
+.project

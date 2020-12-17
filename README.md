@@ -19,6 +19,10 @@
 * [二分查找](二分查找/README.md)
 * [链表](链表/README.md)
 
+## 其他
+> 以下为算法无关的私货内容
+* [Java备忘](Java/README.md)
+
 
 ## 备注
 -  github page中如无法显示公式，请安装chrome插件MathJax Plugin for Github。

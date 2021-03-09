@@ -18,6 +18,8 @@
 * [树](树/README.md)
 * [二分查找](二分查找/README.md)
 * [链表](链表/README.md)
+* [指针](指针/README.md)
+* [栈](栈/README.md)
 
 ## 其他
 > 以下为算法无关的私货内容

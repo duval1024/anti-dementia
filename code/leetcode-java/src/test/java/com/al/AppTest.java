@@ -5,8 +5,6 @@ import static org.junit.Assert.assertTrue;
 import com.al.剑指53_0_N中缺失的数字.Solution;
 import org.junit.Test;
 
-import java.util.Arrays;
-
 /**
  * Unit test for simple App.
  */

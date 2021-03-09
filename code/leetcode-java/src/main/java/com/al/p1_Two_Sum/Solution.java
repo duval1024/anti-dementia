@@ -38,6 +38,26 @@ public class Solution {
         throw new RuntimeException();
     }
 
+    /**
+     * 更高效的一次遍历
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int[] twoSum1(int[] nums, int target) {
+        Map<Integer,Integer> numToIndexMap = new HashMap<>(nums.length);
+        for (int index = 0; index < nums.length; index++) {
+            int targetNum = target - nums[index];
+            if (numToIndexMap.containsKey(targetNum)) {
+                return new int[]{index, numToIndexMap.get(targetNum)};
+            } else {
+                numToIndexMap.put(nums[index], index);
+            }
+        }
+
+        return null;
+    }
+
     @Test
     public void test() {
         Solution solution = new Solution();

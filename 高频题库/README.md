@@ -10,22 +10,69 @@
 - [p98_验证二叉搜索树](../problem/p98_验证二叉搜索树.md)
 - [p110_平衡二叉树](../problem/p110_平衡二叉树.md)
 - [p134_加油站](../problem/p134_加油站.md)
+- [p136_只出现一次的数字](../problem/p136_只出现一次的数字.md)
+- [p137_只出现一次的数字2.md](../problem/p137_只出现一次的数字2.md)
+- [p146_LRU_缓存机制](../problem/p146_LRU_缓存机制.md)
+- [p206_反转链表](../problem/p206_反转链表.md)
+- [p215_数组中的第K个最大元素](../problem/p215_数组中的第K个最大元素.md)
+- [p232_用栈来实现队列](../problem/p232_用栈来实现队列.md)
+- [p328_奇偶链表](../problem/p328_奇偶链表.md)
+- [p415_大数加法](../problem/p415_大数加法.md)
+- [p470_用_Rand7()_实现_Rand10()](../problem/p470_用_Rand7()_实现_Rand10().md)]
+- [p496_下一个更大元素](../problem/p496_下一个更大元素.md)
+- [p860_柠檬水找零](../problem/p860_柠檬水找零.md)
+- [p862_和至少为K的最短子数组](../problem/p862_和至少为K的最短子数组.md)
+- [p876_链表的中间节点](../problem/p876_链表的中间节点.md)
+- [p946_验证栈序列](../problem/p946_验证栈序列.md)
+- [p155_最小栈](../problem/p155_最小栈.md)
+- [p124_二叉树中的最大路径和](../problem/p124_二叉树中的最大路径和.md)
 
 
-LeetCode 134. Gas Station
-LeetCode 136. Single Number
-LeetCode 137. Single Number II
-LeetCode 146. LRU Cache（变形题：带有过期时间的 LRU 缓存）
-LeetCode 206. Reverse Linked List
-LeetCode 215. Kth Largest Element in an Array（等价于：快速排序）
-LeetCode 232. Implement Queue using Stacks
-LeetCode 328. Odd Even Linked List
-LeetCode 415. Add Strings（等价于：大数加法）
-LeetCode 470：rand7() rand10()
-LeetCode 496. Next Greater Element I（时间复杂度O(n)）
-LeetCode 716. Max Stack（两个栈实现最大栈，要求 pop，push，get_max 都为O(1)）
-LeetCode 860. Lemonade Change
-LeetCode 862. Shortest Subarray with Sum at Least K
-LeetCode 876. Middle of the Linked List
-LeetCode 946. Validate Stack Sequences
+
+|199.二叉树的右视图|3|
+|3. 无重复字符的最长子串|3|
+|88. 合并两个有序数组|3|
+|108. 将有序数组转换为二叉搜索树|3|
+|110. 平衡二叉树|3|
+|236. 二叉树的最近公共祖先|3|
+|33. 搜索旋转排序数组|3|
+|322. 零钱兑换|3|
+|83. 删除排序链表中的重复元素|2|
+|206. 反转链表|2|
+|215. 数组中的第K个最大元素|2|
+|56. 合并区间|2|
+|146. LRU缓存机制|2|
+|102. 二叉树的层序遍历|1|
+|518. 零钱兑换 II|1|
+|剑指 Offer 09. 用两个栈实现队列|1|
+|54. 螺旋矩阵|1|
+|1299.将每个元素替换为右侧最大元素|1|
+|42.接雨水|1|
+|105. 从前序与中序遍历序列构造二叉树|1|
+|160. 相交链表|1|
+|139 单词拆分|1|
+|67. 二进制求和|1|
+|230.二叉搜索树中第K小的元素|1|
+|70. 爬楼梯|1|
+|剑指 Offer 61. 扑克牌中的顺子|1|
+|543. 二叉树的直径|1|
+|112. 路径总和|1|
+|23. 合并K个排序链表|1|
+|1143. 最长公共子序列|1|
+|2. 两数相加|1|
+|3无重复的最长字符串长度|1|
+|141. 环形链表|1|
+|515. 在每个树行中找最大值|1|
+|31. 下一个排列|1|
+|503. 下一个更大元素 II|1|
+|297. 二叉树的序列化与反序列化|1|
+|162. 寻找峰值|1|
+|221. 最大正方形|1|
+|128. 最长连续序列|1|
+|560. 和为K的子数组|1|
+|415.字符串相加|1|
+|328. 奇偶链表|1|
+|695. 岛屿的最大面积|1|
+|22. 括号生成|1|
+|32. 最长有效括号|1|
 

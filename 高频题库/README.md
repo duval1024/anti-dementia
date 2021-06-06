@@ -5,7 +5,7 @@
 - [p20_有效的括号](../problem/p20_有效的括号.md)
 - [p21_合并两个有序链表](../problem/p21_合并两个有序链表.md)
 - [p25_k个一组反转链表](../problem/p25_k个一组反转链表.md)
-- [p53_最大子序和](../problem/p53-maximum-subarray.md)
+- [p53_最大子序和](../problem/p53_最大子序和)
 - [p66_加1](../problem/p66_加1.md)
 - [p98_验证二叉搜索树](../problem/p98_验证二叉搜索树.md)
 - [p110_平衡二叉树](../problem/p110_平衡二叉树.md)

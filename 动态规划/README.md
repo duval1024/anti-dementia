@@ -1,14 +1,14 @@
 # 动态规划实战
 
 ## 实战列表
-  * [p123-买卖股票的最佳时机 III](../problem/p123-best-time-to-buy-and-sell-stock-iii.md)
-  * [p714-买卖股票的最佳时机含手续费](../problem/p714-best-time-to-buy-and-sell-stock-with-transaction-fee.md)
-  * [p309-最佳买卖股票时机含冷冻期](../problem/p309_best-time-to-buy-and-sell-stock-with-cooldown.md)
-  * [p188-买卖股票的最佳时机 IV](../problem/p188-best-time-to-buy-and-sell-stock-iv.md)
-  * [p91-解码方法](../problem/p91-decode-ways.md)
-  * [p139-单词拆分](../problem/p139-word-break.md)
-  * [p198-打家劫舍](../problem/p198-house-robber.md)
-  * [p53-最大子序和](../problem/p53-maximum-subarray.md)
+  * [p123-买卖股票的最佳时机 III](../problem/p123_买卖股票的最佳时机3.md)
+  * [p714-买卖股票的最佳时机含手续费](../problem/p714_买卖股票的最佳时机含手续费.md)
+  * [p309-最佳买卖股票时机含冷冻期](../problem/p309_最佳买卖股票时机含冷冻期.md)
+  * [p188-买卖股票的最佳时机 IV](../problem/p188_买卖股票的最佳时机4.md)
+  * [p91_解码方法](../problem/p91_解码方法.md)
+  * [p139-单词拆分](../problem/p139_单词拆分.md)
+  * [p198-打家劫舍](../problem/p198_打家劫舍.md)
+  * [p53-最大子序和](../problem/p53_最大子序和.md)
   * [p1139_最大的以1位边界的正方形](../problem/p1139_最大的以1位边界的正方形.md)
   * [p740_删除与获得点数](../problem/p740_删除与获得点数.md)
   * [p877_石子游戏](../problem/p877_石子游戏.md)

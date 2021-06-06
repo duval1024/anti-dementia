@@ -3,4 +3,4 @@
 
 ## 实战列表
 
-- [p300-最长上升子序列](../problem/p300-longest-increasing-subsequence.md)
+- [p300-最长上升子序列](../problem/p300_最长上升子序列.md)
